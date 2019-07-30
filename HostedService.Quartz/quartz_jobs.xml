@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 				version="2.0">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+
+  <!--<schedule>
+    <job>
+      <name>TestJob</name>
+      <group>TestGroup</group>
+      <description>测试任务</description>
+      <job-type>HostedService.Quartz.Jobs.TestJob, HostedService.Quartz</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <simple>
+        <name>TestTrigger</name>
+        <group>TestGroup</group>
+        <description>测试触发器</description>
+        <job-name>TestJob</job-name>
+        <job-group>TestGroup</job-group>
+        <repeat-count>-1</repeat-count>
+        <repeat-interval>2000</repeat-interval>
+      </simple>
+    </trigger>
+  </schedule>-->
+  
+  <schedule>
+    <job>
+      <name>ajob</name>
+      <group>ajob</group>
+      <description>测试任务</description>
+      <!--命名空间.类名,程序集名称-->
+      <job-type>HostedService.Quartz.Jobs.ajob, HostedService.Quartz</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>ajob</name>
+        <group>ajob</group>
+        <description>测试触发器</description>
+        <job-name>ajob</job-name>
+        <!--和上面的jobgroup对应起来-->
+        <job-group>ajob</job-group>
+        <cron-expression>0/2 * * * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+
+  
+  <schedule>
+    <job>
+      <name>AggregateAgentBetsByDayJob</name>
+      <group>AggregateAgentBetsByDayJob</group>
+      <description>汇总每天代理注单数据</description>
+      <job-type>HostedService.Quartz.Jobs.AggregateAgentBetsByDayJob, HostedService.Quartz</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>AggregateAgentBetsByDayJob</name>
+        <group></group>
+        <description></description>
+        <job-name>AggregateAgentBetsByDayJob</job-name>
+        <job-group>AggregateAgentBetsByDayJob</job-group>
+        <cron-expression>0 0 5 * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+  
+</job-scheduling-data>
